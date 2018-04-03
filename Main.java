@@ -8,13 +8,13 @@ public class Main {
         //Create three grocery item objects
         GroceryItem item01 = new GroceryItem();
         GroceryItem item02 = new GroceryItem(LocalDate.now(), "Almond Milk", 15);
-        GroceryItem item03 = new GroceryItem(LocalDate.now(), "Oreo", 4);
+        GroceryItem item03 = new GroceryItem(LocalDate.now().minusDays(5), "Oreo", 4);
         GroceryItem item04 = new GroceryItem(LocalDate.now(), "Oreo", 4);
-        GroceryItem item05 = new GroceryItem(LocalDate.now(), "Chia Seeds Value Pack", 7);
+        GroceryItem item05 = new GroceryItem(LocalDate.now().minusWeeks(1), "Chia Seeds Value Pack", 7);
         GroceryItem item06 = new GroceryItem(LocalDate.now(), "Gum", 1);
         GroceryItem item07 = new GroceryItem(LocalDate.now(), "Lotion", 18);
         GroceryItem item08 = new GroceryItem(LocalDate.now(), "Mango", 1);
-        GroceryItem item09 = new GroceryItem(LocalDate.now(), "Kale", 2);
+        GroceryItem item09 = new GroceryItem(LocalDate.now().minusDays(3), "Kale", 2);
         GroceryItem item10 = new GroceryItem(LocalDate.now(), "Cereal", 5);
 
 
@@ -26,7 +26,7 @@ public class Main {
         listOfItems.add(item04);
         listOfItems.add(item05);
         listOfItems.add(item06);
-//        listOfItems.add(item07);
+        listOfItems.add(item07);
         listOfItems.add(item08);
         listOfItems.add(item09);
         listOfItems.add(item10);
@@ -90,7 +90,9 @@ public class Main {
     private static int itemsPurchasedLastVisit(ArrayList<GroceryItem> listOfItems) {
         int count = 0;
         for (int i = 0; i < listOfItems.size(); i++) {
-            count++;
+            if (listOfItems.get(i).getDate().isAfter(LocalDate.now().minusDays(1))) {
+                count++;
+            }
         }
         return count;
     }
