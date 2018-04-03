@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 public class Main {
     public static void main(String[] args) throws FileNotFoundException {
-        //create three grocery item objects
+        //Create three grocery item objects
         GroceryItem item01 = new GroceryItem();
         GroceryItem item02 = new GroceryItem(LocalDate.now(), "Almond Milk", 15);
         GroceryItem item03 = new GroceryItem(LocalDate.now(), "Oreo", 4);
@@ -18,7 +18,7 @@ public class Main {
         GroceryItem item10 = new GroceryItem(LocalDate.now(), "Cereal", 5);
 
 
-        //create three grocery item objects
+        //Create three grocery item objects
         ArrayList<GroceryItem> listOfItems = new ArrayList<>();
         listOfItems.add(item01);
         listOfItems.add(item02);
@@ -26,20 +26,20 @@ public class Main {
         listOfItems.add(item04);
         listOfItems.add(item05);
         listOfItems.add(item06);
-        listOfItems.add(item07);
+//        listOfItems.add(item07);
         listOfItems.add(item08);
         listOfItems.add(item09);
         listOfItems.add(item10);
 
 
-        //write grocery item(s) to the file input.txt
+        //Write grocery item(s) to the file input.txt
         writeToFile(listOfItems);
 
-        //number of items were purchased during the last visit to the grocery store
+        //Number of items were purchased during the last visit to the grocery store
         int itemsPurchased = itemsPurchasedLastVisit(listOfItems);
         System.out.println("Items Purchased Last Visit: " + itemsPurchased);
 
-        //the total price of items purchased on date [D]
+        //The total price of items purchased on date [D]
         LocalDate localDate = LocalDate.now();
         int itemsTotalPrice = totalPriceOfItemsPurchased(listOfItems, localDate);
         System.out.println("Total Price of Purchased Items(last visit): $" + itemsTotalPrice);
@@ -48,6 +48,23 @@ public class Main {
         String userItemInput = "Oreo";
         int amountOfTimesPurchased = amountOfTimesItemIsPurchased(listOfItems, userItemInput);
         System.out.println(userItemInput + " Purchase Occurrence(s): " + amountOfTimesPurchased);
+
+        //Items purchased that cost more than $10
+        ArrayList<String> itemsPurchasedCostMoreThan10 = itemsPurchasedOver10Dollars(listOfItems);
+        System.out.println("Purchased Item(s) over $10.00: " + itemsPurchasedCostMoreThan10);
+    }
+
+
+    private static ArrayList<String> itemsPurchasedOver10Dollars(ArrayList<GroceryItem> listOfItems) {
+        String item = "";
+        ArrayList<String> itemsOver10ArrayList = new ArrayList<>();
+        for (int i = 0; i < listOfItems.size(); i++) {
+            if (listOfItems.get(i).getPrice() > 10) {
+                item = listOfItems.get(i).getItem();
+                itemsOver10ArrayList.add(item);
+            }
+        }
+        return itemsOver10ArrayList;
     }
 
     private static int amountOfTimesItemIsPurchased(ArrayList<GroceryItem> listOfItems, String userItem) {
