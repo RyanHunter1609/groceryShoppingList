@@ -1,0 +1,3 @@
+public class GroceryList {
+    //add items to an arraylist ex. ArrayList<GroceryItem> = ...
+}
