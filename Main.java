@@ -16,6 +16,20 @@ public class Main {
         listOfItems.add(item03);
         writeToFile(listOfItems);
 
+        //How many items were purchased during the last visit to the grocery store
+        int itemsPurchased = itemsPurchasedLastVisit(listOfItems);
+
+
+    }
+
+    private static int itemsPurchasedLastVisit(ArrayList<GroceryItem> listOfItems) {
+        int count = 0;
+        for (int i = 0; i < listOfItems.size(); i++) {
+            if () {
+                count++;
+            }
+        }
+        return count;
     }
 
     //write grocery item(s) to the file input.txt
