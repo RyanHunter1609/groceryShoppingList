@@ -24,11 +24,11 @@ public class Main {
 
     private static int itemsPurchasedLastVisit(ArrayList<GroceryItem> listOfItems) {
         int count = 0;
-        for (int i = 0; i < listOfItems.size(); i++) {
-            if () {
-                count++;
-            }
-        }
+//        for (int i = 0; i < listOfItems.size(); i++) {
+//            if () {
+//                count++;
+//            }
+//        }
         return count;
     }
 
