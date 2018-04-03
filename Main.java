@@ -17,7 +17,6 @@ public class Main {
         GroceryItem item09 = new GroceryItem(LocalDate.now().minusDays(3), "Kale", 2);
         GroceryItem item10 = new GroceryItem(LocalDate.now(), "Cereal", 5);
 
-
         //Create three grocery item objects
         ArrayList<GroceryItem> listOfItems = new ArrayList<>();
         listOfItems.add(item01);
@@ -30,7 +29,6 @@ public class Main {
         listOfItems.add(item08);
         listOfItems.add(item09);
         listOfItems.add(item10);
-
 
         //Write grocery item(s) to the file input.txt
         writeToFile(listOfItems);
@@ -53,7 +51,6 @@ public class Main {
         ArrayList<String> itemsPurchasedCostMoreThan10 = itemsPurchasedOver10Dollars(listOfItems);
         System.out.println("Purchased Item(s) over $10.00: " + itemsPurchasedCostMoreThan10);
     }
-
 
     private static ArrayList<String> itemsPurchasedOver10Dollars(ArrayList<GroceryItem> listOfItems) {
         String item = "";
