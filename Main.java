@@ -18,17 +18,15 @@ public class Main {
 
         //How many items were purchased during the last visit to the grocery store
         int itemsPurchased = itemsPurchasedLastVisit(listOfItems);
-
+        System.out.println("Items Purchased Last Visit: " + itemsPurchased);
 
     }
 
     private static int itemsPurchasedLastVisit(ArrayList<GroceryItem> listOfItems) {
         int count = 0;
-//        for (int i = 0; i < listOfItems.size(); i++) {
-//            if () {
-//                count++;
-//            }
-//        }
+        for (int i = 0; i < listOfItems.size(); i++) {
+            count++;
+        }
         return count;
     }
 
