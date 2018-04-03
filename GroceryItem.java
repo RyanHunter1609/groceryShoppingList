@@ -15,8 +15,37 @@ public class GroceryItem {
     }
 
     public GroceryItem(LocalDate date, String item, Integer price) {
-        date = LocalDate.now();
-        item = "Lotion";
-        price = 20;
+        this.date = date;
+        this.item = item;
+        this.price = price;
+    }
+
+    public LocalDate getDate() {
+        return date;
+    }
+
+    public void setDate(LocalDate date) {
+        this.date = date;
+    }
+
+    public String getItem() {
+        return item;
+    }
+
+    public void setItem(String item) {
+        this.item = item;
+    }
+
+    public Integer getPrice() {
+        return price;
+    }
+
+    public void setPrice(Integer price) {
+        this.price = price;
+    }
+
+    @Override
+    public String toString() {
+        return date + " | " + item + " | " + price + "\n";
     }
 }
