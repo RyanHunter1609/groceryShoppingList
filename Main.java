@@ -10,12 +10,13 @@ public class Main {
         GroceryItem item02 = new GroceryItem(LocalDate.now(), "Almond Milk", 15);
         GroceryItem item03 = new GroceryItem(LocalDate.now().minusDays(5), "Oreo", 4);
         GroceryItem item04 = new GroceryItem(LocalDate.now(), "Oreo", 4);
-        GroceryItem item05 = new GroceryItem(LocalDate.now().minusWeeks(1), "Chia Seeds Value Pack", 7);
+        GroceryItem item05 = new GroceryItem(LocalDate.now().minusDays(1), "Chia Seeds Value Pack", 7);
         GroceryItem item06 = new GroceryItem(LocalDate.now(), "Gum", 1);
         GroceryItem item07 = new GroceryItem(LocalDate.now(), "Lotion", 18);
         GroceryItem item08 = new GroceryItem(LocalDate.now(), "Mango", 1);
         GroceryItem item09 = new GroceryItem(LocalDate.now().minusDays(3), "Kale", 2);
         GroceryItem item10 = new GroceryItem(LocalDate.now(), "Cereal", 5);
+        GroceryItem item11 = new GroceryItem(LocalDate.now(), "face Wash", 11);
 
         //Create three grocery item objects
         ArrayList<GroceryItem> listOfItems = new ArrayList<>();
@@ -29,6 +30,7 @@ public class Main {
         listOfItems.add(item08);
         listOfItems.add(item09);
         listOfItems.add(item10);
+        listOfItems.add(item11);
 
         //Write grocery item(s) to the file input.txt
         writeToFile(listOfItems);
@@ -39,8 +41,9 @@ public class Main {
 
         //The total price of items purchased on date [D]
         LocalDate localDate = LocalDate.now();
-        int itemsTotalPrice = totalPriceOfItemsPurchased(listOfItems, localDate);
-        System.out.println("Total Price of Purchased Items(last visit): $" + itemsTotalPrice);
+        int itemsTotalPrice = totalPriceOfItemsPurchasedOnDate(listOfItems, localDate);
+
+        System.out.println("Total Price of Purchased Items (" + localDate + "): $" + itemsTotalPrice);
 
         //How many times was [A] purchased? For example, if A is eGGs then the above sample item should be counted.
         String userItemInput = "Oreo";
@@ -50,6 +53,11 @@ public class Main {
         //Items purchased that cost more than $10
         ArrayList<String> itemsPurchasedCostMoreThan10 = itemsPurchasedOver10Dollars(listOfItems);
         System.out.println("Purchased Item(s) over $10.00: " + itemsPurchasedCostMoreThan10);
+
+        GroceryList groceries = new GroceryList();
+        int numItemsPurchasedLastVisit = groceries.itemsPurchasedLastVisit();
+        System.out.println("Items Purchased Last Two Visits: " + numItemsPurchasedLastVisit);
+
     }
 
     private static ArrayList<String> itemsPurchasedOver10Dollars(ArrayList<GroceryItem> listOfItems) {
@@ -74,7 +82,7 @@ public class Main {
         return count;
     }
 
-    private static int totalPriceOfItemsPurchased(ArrayList<GroceryItem> listOfItems, LocalDate date) {
+    private static int totalPriceOfItemsPurchasedOnDate(ArrayList<GroceryItem> listOfItems, LocalDate date) {
         int totalPriceSum = 0;
         for (int i = 0; i < listOfItems.size(); i++) {
             if (listOfItems.get(i).getDate().equals(date)) {
@@ -85,13 +93,19 @@ public class Main {
     }
 
     private static int itemsPurchasedLastVisit(ArrayList<GroceryItem> listOfItems) {
-        int count = 0;
+        //find the latest date
+        LocalDate lastDate = listOfItems.get(0).getDate();
         for (int i = 0; i < listOfItems.size(); i++) {
-            if (listOfItems.get(i).getDate().isAfter(LocalDate.now().minusDays(1))) {
-                count++;
-            }
+            if (listOfItems.get(i).getDate().isAfter(lastDate))
+                lastDate = listOfItems.get(i).getDate();
         }
-        return count;
+//        int count = 0;
+//        for (int i = 0; i < listOfItems.size(); i++) {
+//            if (listOfItems.get(i).) {
+//                count++;
+//            }
+//        }
+        return 0;
     }
 
     private static void writeToFile(ArrayList<GroceryItem> itemArrayList) throws FileNotFoundException {
