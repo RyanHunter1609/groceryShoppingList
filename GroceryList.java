@@ -8,13 +8,13 @@ public class GroceryList {
      **/
     private ArrayList<GroceryItem> groceryItemArrayList;
 
-    public int itemsPurchasedLastVisit() {
-        int count = 0;
-        for (int i = 0; i < groceryItemArrayList.size(); i++) {
-            if (groceryItemArrayList.get(i).getDate().isAfter(LocalDate.now().minusDays(2))) {
-                count++;
-            }
-        }
-        return count;
-    }
+//    public int itemsPurchasedLastVisit() {
+//        int count = 0;
+//        for (int i = 0; i < groceryItemArrayList.size(); i++) {
+//            if (groceryItemArrayList.get(i).getDate().isAfter(LocalDate.now().minusDays(2))) {
+//                count++;
+//            }
+//        }
+//        return count;
+//    }
 }

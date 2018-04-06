@@ -2,6 +2,7 @@ import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) throws FileNotFoundException {
@@ -54,11 +55,12 @@ public class Main {
         ArrayList<String> itemsPurchasedCostMoreThan10 = itemsPurchasedOver10Dollars(listOfItems);
         System.out.println("Purchased Item(s) over $10.00: " + itemsPurchasedCostMoreThan10);
 
-        GroceryList groceries = new GroceryList();
-        int numItemsPurchasedLastVisit = groceries.itemsPurchasedLastVisit();
-        System.out.println("Items Purchased Last Two Visits: " + numItemsPurchasedLastVisit);
+//        GroceryList groceries = new GroceryList();
+//        int numItemsPurchasedLastVisit = groceries.itemsPurchasedLastVisit();
+//        System.out.println("Items Purchased Last Two Visits: " + numItemsPurchasedLastVisit);
 
     }
+
 
     private static ArrayList<String> itemsPurchasedOver10Dollars(ArrayList<GroceryItem> listOfItems) {
         String item = "";
@@ -93,19 +95,24 @@ public class Main {
     }
 
     private static int itemsPurchasedLastVisit(ArrayList<GroceryItem> listOfItems) {
-        //find the latest date
+        int count = 0;
         LocalDate lastDate = listOfItems.get(0).getDate();
+
+        //Find the latest date
         for (int i = 0; i < listOfItems.size(); i++) {
-            if (listOfItems.get(i).getDate().isAfter(lastDate))
+            if (listOfItems.get(i).getDate().isAfter(lastDate)) {
                 lastDate = listOfItems.get(i).getDate();
+
+                //Write another loop and count every time an item was purchased on this date.
+                for (int j = 0; j < listOfItems.size(); j++) {
+                    if (lastDate.equals(listOfItems.get(j).getItem())) {
+                        count++;
+                    }
+                }
+            }
         }
-//        int count = 0;
-//        for (int i = 0; i < listOfItems.size(); i++) {
-//            if (listOfItems.get(i).) {
-//                count++;
-//            }
-//        }
-        return 0;
+
+        return count;
     }
 
     private static void writeToFile(ArrayList<GroceryItem> itemArrayList) throws FileNotFoundException {
@@ -114,5 +121,4 @@ public class Main {
         printWriter.print(itemArrayList);
         printWriter.close();
     }
-
 }
